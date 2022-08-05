@@ -1,0 +1,42 @@
+plugins {
+	id 'org.springframework.boot' version '2.6.3'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id 'java'
+	id 'org.owasp.dependencycheck' version "6.5.3"
+	id "org.sonarqube" version "3.3"
+}
+
+group = 'airbus.sunspotanalyser.api'
+version = '1.0.0'
+description = 'sunspot analyser test'
+java.sourceCompatibility = JavaVersion.VERSION_1_8
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-webflux'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
+	implementation 'org.springframework.boot:spring-boot-starter-quartz'
+	implementation 'org.springframework.boot:spring-boot-starter-mail'
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+	
+	// rest
+	implementation group: 'org.modelmapper', name: 'modelmapper', version: '2.4.2'
+	implementation group: 'org.springdoc', name: 'springdoc-openapi-ui', version: '1.5.8'
+	implementation group: 'org.springdoc', name: 'springdoc-openapi-data-rest', version: '1.5.8'
+	
+	// persistence
+	implementation group: 'com.vladmihalcea', name: 'hibernate-types-55', version: '2.12.1'
+	implementation group: 'org.flywaydb', name: 'flyway-core', version: '8.1.0'
+	runtimeOnly group: 'mysql', name: 'mysql-connector-java', version: '8.0.28'
+}
+
+test {
+	useJUnitPlatform()
+}

@@ -1,0 +1,22 @@
+version: "3"
+services:
+ 
+  sun-spot-analyser-mysql:
+    image: mysql:8
+    restart: unless-stopped
+    volumes:
+      - ./db/backups:/tmp/backups
+      - ./db/data:/var/lib/mysql
+      - ./db/init:/docker-entrypoint-initdb.d
+    environment:
+      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+      - MYSQL_DATABASE=sunspotanalyser  
+      
+  sun-spot-analyser-api:
+    build: 
+      context: api
+      dockerfile: Dockerfile
+    ports:
+      - 8010:8010
+    depends_on:
+      - sun-spot-analyser-mysql

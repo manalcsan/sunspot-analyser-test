@@ -1,0 +1,16 @@
+To build and deploy server with docker-compose do:
+- docker-compose up
+
+(You may do it twice since first time server will try to start without SQL db totally mounted)
+
+Do queries:
+
+GET to retrieve all available grids 
+http://localhost:8010/sun-spot-analyser-api/grid
+
+POST to create grid with info (JSON in body)
+http://localhost:8010/sun-spot-analyser-api/grid
+{ "size": 3, "gridvalues": "4, 2, 3, 2, 2, 1, 3, 2, 1" }
+
+GET{grid_id) to retrieve all available scores calculates for that grid 
+http://localhost:8010/sun-spot-analyser-api/scores/1

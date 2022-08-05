@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xml>
+
+<configuration>
+
+	<appender name="stdoutAppender" class="ch.qos.logback.core.ConsoleAppender">
+		
+		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+			<Pattern>
+				%blue(%date) [%thread] %highlight(%-5level) %cyan(%logger.%method:%line) - %message%n
+			</Pattern>
+		</encoder>
+
+		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+			<level>debug</level>
+		</filter>
+	</appender>
+
+	<root level="warn">
+		<appender-ref ref="stdoutAppender" />
+	</root>
+
+	<logger name="airbus.sunspot-analyser-test" level="debug" />
+	<logger name="org.openqa.selenium" level="off" />
+	
+	<!-- <logger name="reactor.netty.http.client" level="trace" /> -->
+
+</configuration>
